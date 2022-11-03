@@ -31,7 +31,7 @@ const KEYS = [
 	'z',
 ]
 
-const Keyboard = () => {
+const Keyboard: React.FC = () => {
 	return (
 		<div
 			style={{
