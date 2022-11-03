@@ -31,21 +31,44 @@ const KEYS = [
 	'z',
 ]
 
-const Keyboard: React.FC = () => {
+type KeyboardProps = {
+	activeLetters: string[]
+	inactiveLetters: string[]
+	addGuessedLetter: (letter: string) => void
+  disabled?: boolean
+}
+
+const Keyboard: React.FC<KeyboardProps> = ({
+	activeLetters,
+	inactiveLetters,
+	addGuessedLetter,
+  disabled = false
+}) => {
 	return (
 		<div
 			style={{
-				display: "grid",
-				gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))",
-				gap: ".5rem",
+				display: 'grid',
+				gridTemplateColumns: 'repeat(auto-fit, minmax(75px, 1fr))',
+				gap: '.5rem',
 			}}
 		>
-      {KEYS.map(key => {
-        return (
-          <button className={styles.btn} key={key}>{key}</button>
-        )
-      })}
-    </div>
+			{KEYS.map(key => {
+				const isActive = activeLetters.includes(key)
+				const isInactive = inactiveLetters.includes(key)
+				return (
+					<button
+						onClick={() => addGuessedLetter(key)}
+						className={`${styles.btn} ${
+							isActive ? styles.active : ''
+						} ${isInactive ? styles.inactive : ''}`}
+						key={key}
+						disabled={isInactive || isActive || disabled}
+					>
+						{key}
+					</button>
+				)
+			})}
+		</div>
 	)
 }
 
