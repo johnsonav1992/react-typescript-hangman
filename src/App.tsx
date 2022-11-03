@@ -19,7 +19,9 @@ function App() {
 	)
 
 	const isLoser = incorrectLetters.length >= 6
-	const isWinner = wordToGuess.split('').every(letter => guessedLetters.includes(letter))
+	const isWinner = wordToGuess
+		.split('')
+		.every(letter => guessedLetters.includes(letter))
 
 	const addGuessedLetter = useCallback(
 		(letter: string) => {
@@ -49,7 +51,7 @@ function App() {
 	useEffect(() => {
 		const handler = (e: KeyboardEvent) => {
 			const key = e.key
-			if (key !== "Enter") return
+			if (key !== 'Enter') return
 
 			e.preventDefault()
 			setGuessedLetters([])

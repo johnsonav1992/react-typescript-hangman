@@ -35,14 +35,14 @@ type KeyboardProps = {
 	activeLetters: string[]
 	inactiveLetters: string[]
 	addGuessedLetter: (letter: string) => void
-  disabled?: boolean
+	disabled?: boolean
 }
 
 const Keyboard: React.FC<KeyboardProps> = ({
 	activeLetters,
 	inactiveLetters,
 	addGuessedLetter,
-  disabled = false
+	disabled = false,
 }) => {
 	return (
 		<div

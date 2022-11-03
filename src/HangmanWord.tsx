@@ -1,11 +1,15 @@
 import React from 'react'
 
 type HangmanWordProps = {
-  guessedLetters: string[],
-  wordToGuess: string
-  reveal?: boolean
+	guessedLetters: string[]
+	wordToGuess: string
+	reveal?: boolean
 }
-const HangmanWord: React.FC<HangmanWordProps> = ({ guessedLetters, wordToGuess, reveal = false}) => {
+const HangmanWord: React.FC<HangmanWordProps> = ({
+	guessedLetters,
+	wordToGuess,
+	reveal = false,
+}) => {
 	const word = 'test'
 
 	return (
@@ -20,13 +24,17 @@ const HangmanWord: React.FC<HangmanWordProps> = ({ guessedLetters, wordToGuess, 
 			}}
 		>
 			{wordToGuess.split('').map((letter, i) => (
-				<span style={{ borderBottom: ".1em solid black" }} key={i}>
+				<span style={{ borderBottom: '.1em solid black' }} key={i}>
 					<span
 						style={{
-							visibility: guessedLetters.includes(letter) || reveal
-								? 'visible'
-								: 'hidden',
-                color: !guessedLetters.includes(letter) && reveal ? "red" : "black"
+							visibility:
+								guessedLetters.includes(letter) || reveal
+									? 'visible'
+									: 'hidden',
+							color:
+								!guessedLetters.includes(letter) && reveal
+									? 'red'
+									: 'black',
 						}}
 					>
 						{letter}
